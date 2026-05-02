@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chronos Automotores · Mar del Plata</title>
-<meta name="description" content="Autos usados de calidad en Mar del Plata. Financiación disponible.">
+<meta name="description" content="Comprar un auto usado en Mar del Plata sin sorpresas. Chronos Automotores: stock verificado, financiación a medida y permuta en el día. Consultá por WhatsApp.">
 <meta name="keywords" content="autos usados, venta de autos, Mar del Plata, Chronos">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,6 +186,8 @@
   .car-photo { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
   .car-photo img { width: 100%; height: 100%; object-fit: cover; }
   .car-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 5px 10px; background: rgba(10,10,10,0.78); backdrop-filter: blur(8px); border: 1px solid var(--line-2); border-radius: 999px; font-size: 10px; color: var(--ink-2); letter-spacing: 0.16em; text-transform: uppercase; }
+  .car-stock { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 5px 10px; background: rgba(30,166,90,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(30,166,90,0.35); border-radius: 999px; font-size: 10px; color: #2ecc71; letter-spacing: 0.14em; text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
+  .car-stock::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #2ecc71; display: block; }
   .car-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
   .car-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
   .car-make { font-size: 11px; color: var(--ink-3); letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 6px; }
@@ -194,10 +196,10 @@
   .car-price-row { display: flex; align-items: baseline; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
   .car-price-currency { font-size: 13px; color: var(--ink-3); font-weight: 500; }
   .car-price { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: var(--red); letter-spacing: -0.02em; line-height: 1; font-feature-settings: "tnum" 1; }
-  .car-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 20px; background: transparent; border: 1px solid var(--red-line); color: var(--red-2); border-radius: 999px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: background 0.2s, color 0.2s, border-color 0.2s; }
-  .car-cta:hover { background: var(--red); color: #fff; border-color: var(--red); }
-  .car-cta svg { width: 16px; height: 16px; transition: transform 0.2s; }
-  .car-cta:hover svg { transform: translateX(2px); }
+  .car-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 20px; background: var(--wa); border: none; color: #fff; border-radius: 999px; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; box-shadow: 0 6px 20px -6px rgba(30,166,90,0.5); transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+  .car-cta:hover { background: var(--wa-2); transform: translateY(-1px); box-shadow: 0 10px 24px -6px rgba(30,166,90,0.6); }
+  .car-cta:active { transform: translateY(0); }
+  .car-cta svg { width: 18px; height: 18px; flex: none; }
 
   /* Benefits */
   .benefits { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
@@ -345,7 +347,7 @@
       </div>
       <div class="hero-meta">
         <div class="hero-meta-item">
-          <span class="hero-meta-num">15+</span>
+          <span class="hero-meta-num">16+</span>
           <span class="hero-meta-label">Años de trayectoria</span>
         </div>
         <div class="hero-meta-item">
@@ -577,6 +579,7 @@
             <span class="logo-sub">Automotores</span>
           </span>
         </a>
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:18px;background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0 0 8px;line-height:1.2;">Tu auto, sin vueltas.</p>
         <p>Agencia de autos usados certificados y 0KM en Mar del Plata. Financiación, permuta y stock renovado todo el año.</p>
       </div>
       <div class="footer-col">
@@ -633,6 +636,7 @@
     <article class="car-card">
       <div class="car-photo">
         <span class="car-badge">${c.tag}</span>
+        <span class="car-stock">1 disponible</span>
         <img src="${c.img}" alt="${c.make} ${c.model} ${c.year}" loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="placeholder" data-label="Foto · ${c.make} ${c.year}" style="display:none;position:absolute;inset:0;"></div>
@@ -650,8 +654,8 @@
           <span class="car-price">${fmt.format(c.price)}</span>
         </div>
         <a class="car-cta" href="https://wa.me/5492235525054?text=${encodeURIComponent(c.waText)}" target="_blank" rel="noopener">
-          Consultar
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.2-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          Consultar por WhatsApp
         </a>
       </div>
     </article>
