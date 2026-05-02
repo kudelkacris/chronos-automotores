@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronos Automotores · Mar del Plata</title>
+<meta name="description" content="Autos usados de calidad en Mar del Plata. Financiación disponible.">
+<meta name="keywords" content="autos usados, venta de autos, Mar del Plata, Chronos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #101010;
+    --panel: #161616;
+    --panel-2: #1c1c1c;
+    --line: #242424;
+    --line-2: #333333;
+    --red: #e63946;
+    --red-2: #ff4d5c;
+    --magenta: oklch(0.66 0.27 350);
+    --orange: oklch(0.78 0.18 55);
+    --brand-grad: linear-gradient(135deg, oklch(0.66 0.27 350) 0%, #e63946 50%, oklch(0.78 0.18 55) 100%);
+    --red-soft: rgba(230, 57, 70, 0.14);
+    --red-line: rgba(230, 57, 70, 0.38);
+    --ink: #f5f3ee;
+    --ink-2: #d6d2c8;
+    --ink-3: #908a7e;
+    --ink-4: #5e594f;
+    --wa: #1ea65a;
+    --wa-2: #19944f;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+  /* Logo */
+  .logo { display: inline-flex; align-items: center; gap: 12px; line-height: 1; }
+  .logo-badge {
+    position: relative; width: 40px; height: 40px;
+    border-radius: 50%; padding: 2px;
+    background: var(--brand-grad); flex: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-badge-inner {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: #050505; display: flex; align-items: center;
+    justify-content: center; gap: 3px; position: relative;
+  }
+  .logo-badge svg.logo-c { width: 18px; height: 18px; color: var(--red); }
+  .logo-wordmark { display: flex; flex-direction: column; gap: 2px; }
+  .logo-mark { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; color: var(--ink); text-transform: uppercase; }
+  .logo-sub { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.28em; color: var(--ink-3); text-transform: uppercase; }
+
+  /* Header */
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+  .header-nav { display: none; gap: 28px; }
+  .header-nav a { font-size: 13px; color: var(--ink-2); letter-spacing: 0.02em; transition: color 0.2s; }
+  .header-nav a:hover { color: var(--red-2); }
+  .header-phone {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 14px; border: 1px solid var(--line-2); border-radius: 999px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.01em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .header-phone:hover { border-color: var(--red-line); background: var(--red-soft); }
+  .header-phone-icon { width: 14px; height: 14px; color: var(--red); flex: none; }
+  .header-phone-label { display: none; color: var(--ink-3); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  @media (min-width: 860px) {
+    .header-inner { height: 84px; }
+    .header-nav { display: flex; }
+    .header-phone { padding: 11px 18px; font-size: 14px; }
+    .header-phone-label { display: inline; }
+    .logo-mark { font-size: 24px; }
+    .logo-sub { font-size: 10px; }
+  }
+
+  /* Hero */
+  .hero { position: relative; padding: 56px 0 24px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(1100px 500px at 90% 0%, oklch(0.66 0.27 350 / 0.16), transparent 60%),
+      radial-gradient(700px 380px at 0% 90%, oklch(0.78 0.18 55 / 0.10), transparent 70%),
+      radial-gradient(900px 400px at 50% 50%, rgba(230,57,70,0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-2); margin-bottom: 20px; }
+  .hero-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--brand-grad); border-radius: 2px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(38px, 7vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 20px; text-wrap: balance; }
+  .hero h1 em { font-style: italic; background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 400; }
+  .hero-lead { font-size: 17px; color: var(--ink-2); max-width: 52ch; margin: 0 0 32px; text-wrap: pretty; }
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 36px; }
+
+  /* Buttons */
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 24px; background: var(--wa); color: #fff;
+    border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: 0.005em;
+    box-shadow: 0 8px 24px -8px rgba(30, 166, 90, 0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+    transition: transform 0.15s ease, background 0.2s, box-shadow 0.2s;
+  }
+  .btn-wa:hover { background: var(--wa-2); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(30, 166, 90, 0.65), inset 0 1px 0 rgba(255,255,255,0.15); }
+  .btn-wa:active { transform: translateY(0); }
+  .btn-wa svg { width: 20px; height: 20px; flex: none; }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 15px 22px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 14px; color: var(--ink-2); transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost:hover { border-color: var(--red-line); color: var(--ink); }
+
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 24px 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 500; color: var(--red); letter-spacing: -0.01em; }
+  .hero-meta-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .hero-photo { position: relative; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); }
+  .hero-photo-tag { position: absolute; top: 16px; left: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(10px); border: 1px solid var(--red-line); border-radius: 999px; font-size: 10.5px; color: var(--red-2); letter-spacing: 0.18em; text-transform: uppercase; }
+  .hero-photo-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+  .hero-photo-meta { position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .hero-photo-meta strong { display: block; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+  .hero-photo-meta span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.14em; text-transform: uppercase; }
+  .hero-photo-price { font-family: 'Fraunces', serif; font-size: 22px; color: var(--red); letter-spacing: -0.01em; }
+
+  .placeholder {
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(135deg, oklch(0.22 0.005 80) 0, oklch(0.22 0.005 80) 8px, oklch(0.18 0.005 80) 8px, oklch(0.18 0.005 80) 16px);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-3); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .placeholder::after { content: attr(data-label); }
+
+  @media (min-width: 860px) {
+    .hero { padding: 96px 0 48px; }
+    .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
+    .hero-photo { aspect-ratio: 5 / 4; }
+  }
+
+  /* Section */
+  section { position: relative; }
+  .section-pad { padding: 72px 0; }
+  .section-head { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+  .section-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-2); }
+  .section-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(30px, 4.5vw, 48px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 22ch; text-wrap: balance; }
+  .section-title em { font-style: italic; background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .section-head-row { display: flex; flex-direction: column; gap: 18px; justify-content: space-between; align-items: flex-start; }
+  .section-sub { color: var(--ink-3); font-size: 15px; max-width: 38ch; margin: 0; }
+
+  @media (min-width: 860px) {
+    .section-pad { padding: 112px 0; }
+    .section-head-row { flex-direction: row; align-items: flex-end; }
+  }
+
+  /* Cars */
+  #vehiculos { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+  .cars-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 720px) { .cars-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .cars-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .car-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s; }
+  .car-card:hover { transform: translateY(-3px); border-color: var(--red-line); box-shadow: 0 24px 48px -24px rgba(0,0,0,0.6), 0 0 0 1px rgba(230,57,70,0.06); }
+  .car-photo { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
+  .car-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .car-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 5px 10px; background: rgba(10,10,10,0.78); backdrop-filter: blur(8px); border: 1px solid var(--line-2); border-radius: 999px; font-size: 10px; color: var(--ink-2); letter-spacing: 0.16em; text-transform: uppercase; }
+  .car-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .car-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .car-make { font-size: 11px; color: var(--ink-3); letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 6px; }
+  .car-model { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+  .car-year { align-self: flex-start; padding: 5px 10px; border: 1px solid var(--line-2); border-radius: 6px; font-size: 12px; color: var(--ink-2); font-feature-settings: "tnum" 1; }
+  .car-price-row { display: flex; align-items: baseline; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .car-price-currency { font-size: 13px; color: var(--ink-3); font-weight: 500; }
+  .car-price { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: var(--red); letter-spacing: -0.02em; line-height: 1; font-feature-settings: "tnum" 1; }
+  .car-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 20px; background: transparent; border: 1px solid var(--red-line); color: var(--red-2); border-radius: 999px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .car-cta:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .car-cta svg { width: 16px; height: 16px; transition: transform 0.2s; }
+  .car-cta:hover svg { transform: translateX(2px); }
+
+  /* Benefits */
+  .benefits { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  @media (min-width: 860px) { .benefits { grid-template-columns: repeat(3, 1fr); } }
+  .benefit { background: var(--panel); padding: 36px 28px 40px; display: flex; flex-direction: column; gap: 18px; transition: background 0.25s; }
+  .benefit:hover { background: var(--panel-2); }
+  .benefit-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 0.04em; }
+  .benefit-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--red-line); border-radius: 12px; color: var(--red-2); background: var(--red-soft); }
+  .benefit-icon svg { width: 22px; height: 22px; }
+  .benefit h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px; letter-spacing: -0.01em; margin: 4px 0 0; }
+  .benefit p { color: var(--ink-2); font-size: 15px; line-height: 1.6; margin: 0; text-wrap: pretty; }
+
+  /* Visit */
+  #visitanos { background: var(--bg-2); }
+  .visit-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 980px) { .visit-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+  .visit-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .visit-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin: 0 0 20px; display: flex; align-items: center; gap: 10px; }
+  .visit-card h3::before { content: ""; width: 24px; height: 2px; background: var(--brand-grad); border-radius: 2px; }
+
+  .hours-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .hours-list li { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; }
+  .hours-list li:first-child { border-top: none; padding-top: 4px; }
+  .hours-list .day { color: var(--ink-2); }
+  .hours-list .time { color: var(--ink); font-feature-settings: "tnum" 1; letter-spacing: 0.01em; }
+  .hours-list .closed { color: var(--ink-4); font-style: italic; }
+  .hours-status { margin-top: 18px; display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid rgba(30, 166, 90, 0.35); background: rgba(30, 166, 90, 0.10); border-radius: 999px; font-size: 13px; color: #5cd28b; }
+  .hours-status .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--wa); box-shadow: 0 0 0 4px rgba(30, 166, 90, 0.2); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(30, 166, 90, 0.2); } 50% { box-shadow: 0 0 0 8px rgba(30, 166, 90, 0); } }
+
+  .map-card { padding: 0; overflow: hidden; }
+  .map-card .visit-card-body { padding: 28px; }
+  .map-card h3 { margin-bottom: 16px; }
+  .map-address { color: var(--ink-2); font-size: 15px; line-height: 1.5; margin: 0 0 18px; }
+  .map-address strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+  .map-frame { position: relative; aspect-ratio: 16 / 10; background: #0d1318; border-top: 1px solid var(--line); overflow: hidden; }
+  .map-frame svg { width: 100%; height: 100%; display: block; }
+  .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); z-index: 3; display: flex; flex-direction: column; align-items: center; }
+  .map-pin-bubble { padding: 8px 14px; background: var(--bg); border: 1px solid var(--red-line); border-radius: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red-2); white-space: nowrap; margin-bottom: 8px; }
+  .map-pin-dot { width: 16px; height: 16px; background: var(--red); border-radius: 50%; border: 3px solid var(--bg); box-shadow: 0 0 0 4px var(--red-soft), 0 0 24px rgba(230,57,70,0.6); }
+  .map-link { position: absolute; bottom: 14px; right: 14px; z-index: 3; display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(10,10,10,0.85); backdrop-filter: blur(8px); border: 1px solid var(--line-2); border-radius: 999px; font-size: 12px; color: var(--ink); transition: border-color 0.2s, color 0.2s; }
+  .map-link:hover { border-color: var(--red-line); color: var(--red-2); }
+  .map-link svg { width: 12px; height: 12px; }
+
+  /* Form */
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.14em; text-transform: uppercase; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 10px; padding: 13px 14px; color: var(--ink);
+    font: inherit; font-size: 15px; transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+  }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23908a7e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--red); background: var(--bg-2); box-shadow: 0 0 0 3px var(--red-soft); }
+  .field-row { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 540px) { .field-row { grid-template-columns: 1fr 1fr; } }
+  .form-submit {
+    margin-top: 6px; padding: 15px 22px; background: var(--red);
+    color: #fff; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: 0.005em;
+    transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px -8px rgba(230,57,70,0.5); position: relative; overflow: hidden;
+  }
+  .form-submit::before { content: ""; position: absolute; inset: 0; background: var(--brand-grad); opacity: 0; transition: opacity 0.25s; }
+  .form-submit span { position: relative; z-index: 1; }
+  .form-submit:hover { transform: translateY(-1px); }
+  .form-submit:hover::before { opacity: 1; }
+  .form-submit:active { transform: translateY(0); }
+  .form-success { display: none; padding: 14px 16px; background: var(--red-soft); border: 1px solid var(--red-line); border-radius: 10px; color: var(--red-2); font-size: 14px; }
+  .form-success.show { display: block; }
+
+  /* Footer */
+  footer { background: var(--bg); border-top: 1px solid var(--line); padding: 56px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
+  @media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; } }
+  .footer-brand p { color: var(--ink-3); font-size: 14px; line-height: 1.6; margin: 16px 0 0; max-width: 36ch; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; font-weight: 600; }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+  .footer-col a, .footer-col li { color: var(--ink-2); font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--red-2); }
+  .footer-bottom { padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; align-items: flex-start; justify-content: space-between; color: var(--ink-4); font-size: 12px; letter-spacing: 0.02em; }
+  @media (min-width: 720px) { .footer-bottom { flex-direction: row; align-items: center; } }
+
+  /* WhatsApp float */
+  .wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--wa); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px -8px rgba(30, 166, 90, 0.6); transition: transform 0.2s, background 0.2s; }
+  .wa-float:hover { background: var(--wa-2); transform: scale(1.06); }
+  .wa-float svg { width: 28px; height: 28px; color: #fff; }
+  @media (min-width: 860px) { .wa-float { width: 60px; height: 60px; bottom: 28px; right: 28px; } .wa-float svg { width: 30px; height: 30px; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="Chronos Automotores">
+      <span class="logo-badge" aria-hidden="true">
+        <span class="logo-badge-inner">
+          <svg class="logo-c" viewBox="0 0 32 32" fill="none">
+            <path d="M24 8.5C21.8 6.3 18.8 5 15.5 5 9.7 5 5 9.7 5 15.5S9.7 26 15.5 26c3.3 0 6.3-1.5 8.2-3.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </span>
+      <span class="logo-wordmark">
+        <span class="logo-mark">Chronos</span>
+        <span class="logo-sub">Automotores</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="#vehiculos">Vehículos</a>
+      <a href="#porque">Por qué elegirnos</a>
+      <a href="#visitanos">Visitanos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+542235525054" class="header-phone">
+      <svg class="header-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span>
+        <span class="header-phone-label">Llamanos</span>
+        <span style="display:block;">2235-525-054</span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow">Mar del Plata · Desde 2010</div>
+      <h1>Tu auto ideal te está <em>esperando</em> en Mar del&nbsp;Plata.</h1>
+      <p class="hero-lead">Selección curada de usados certificados y 0KM. Financiación a medida, permuta de tu unidad y atención personalizada de principio a fin.</p>
+      <div class="hero-cta-row">
+        <a class="btn-wa" href="https://wa.me/5492235525054?text=Hola%2C%20vi%20su%20web%20y%20quería%20consultar" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.2-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <a class="btn-ghost" href="#vehiculos">
+          Ver vehículos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">15+</span>
+          <span class="hero-meta-label">Años de trayectoria</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">100%</span>
+          <span class="hero-meta-label">Documentación al día</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">A medida</span>
+          <span class="hero-meta-label">Financiación y permuta</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <span class="hero-photo-tag"><span class="dot"></span>Destacado del mes</span>
+      <img src="img/ranger-2022.png" alt="Ford Ranger 2022" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder" data-label="Foto · Ford Ranger 2022" style="display:none;position:absolute;inset:0;"></div>
+      <div class="hero-photo-meta">
+        <div>
+          <strong>Ford Ranger</strong>
+          <span>Limited 4×4 · 2022</span>
+        </div>
+        <div class="hero-photo-price">USD 29.500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHÍCULOS -->
+<section id="vehiculos" class="section-pad">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-row">
+        <div>
+          <div class="section-eyebrow">Disponibles ahora</div>
+          <h2 class="section-title">Una selección <em>elegida con criterio</em>.</h2>
+        </div>
+        <p class="section-sub">Cada unidad pasa por inspección mecánica, verificación de papeles y service antes de exhibirse.</p>
+      </div>
+    </div>
+    <div class="cars-grid" id="cars-grid"></div>
+  </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section id="porque" class="section-pad" style="background: var(--bg-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Por qué elegirnos</div>
+      <h2 class="section-title">Una compra que se siente <em>simple</em>, de principio a fin.</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="benefit-num">01</span>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><line x1="2" y1="11" x2="22" y2="11"/><circle cx="7" cy="15.5" r="1"/><line x1="11" y1="15.5" x2="17" y2="15.5"/></svg>
+        </div>
+        <h3>Financiación a medida</h3>
+        <p>Planes en pesos y dólares con tasas competitivas. Trabajamos con bancos y prendarios para que el plan se ajuste a vos, no al revés.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-num">02</span>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <h3>Permuta de tu vehículo</h3>
+        <p>Tasamos tu unidad en el día, con valor real de mercado. Lo entregás como parte de pago y simplificamos toda la operación en un solo paso.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-num">03</span>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>Stock permanente</h3>
+        <p>Renovación constante de unidades 0KM y usadas certificadas. Si lo que buscás no está, lo conseguimos: trabajamos con búsqueda a pedido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISITANOS -->
+<section id="visitanos" class="section-pad" style="background: var(--bg-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-row">
+        <div>
+          <div class="section-eyebrow">Visitanos</div>
+          <h2 class="section-title">Pasá por el local <em>cuando quieras</em>.</h2>
+        </div>
+        <p class="section-sub">Av. Juan B. Justo 3745, Mar del Plata. Te recibimos sin turno previo.</p>
+      </div>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>Horarios de atención</h3>
+        <ul class="hours-list">
+          <li><span class="day">Lunes a Viernes</span><span class="time">09:00 – 19:00</span></li>
+          <li><span class="day">Sábados</span><span class="time">09:00 – 14:00</span></li>
+          <li><span class="day">Domingos y feriados</span><span class="time closed">Cerrado</span></li>
+        </ul>
+        <div class="hours-status" id="hours-status">
+          <span class="pulse"></span>
+          <span id="hours-status-text">Verificando estado…</span>
+        </div>
+      </div>
+      <div class="visit-card map-card">
+        <div class="visit-card-body">
+          <h3>Cómo llegar</h3>
+          <p class="map-address">
+            <strong>Chronos Automotores</strong>
+            Av. Juan B. Justo 3745<br>B7600 · Mar del Plata, Buenos Aires
+          </p>
+        </div>
+        <div class="map-frame">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="none">
+            <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2a32" stroke-width="0.5"/></pattern></defs>
+            <rect width="400" height="250" fill="#0e1418"/>
+            <rect width="400" height="250" fill="url(#grid)"/>
+            <line x1="-20" y1="200" x2="420" y2="60" stroke="#2d3a44" stroke-width="10"/>
+            <line x1="-20" y1="200" x2="420" y2="60" stroke="#3a4956" stroke-width="1" stroke-dasharray="6 6"/>
+            <line x1="80" y1="0" x2="160" y2="250" stroke="#1c252c" stroke-width="4"/>
+            <line x1="200" y1="0" x2="280" y2="250" stroke="#1c252c" stroke-width="4"/>
+            <line x1="320" y1="0" x2="400" y2="250" stroke="#1c252c" stroke-width="4"/>
+            <line x1="0" y1="40" x2="400" y2="-20" stroke="#1c252c" stroke-width="3"/>
+            <line x1="0" y1="240" x2="400" y2="180" stroke="#1c252c" stroke-width="3"/>
+            <rect x="180" y="100" width="50" height="40" fill="#141b20" opacity="0.5"/>
+            <rect x="240" y="80" width="60" height="30" fill="#141b20" opacity="0.5"/>
+            <rect x="100" y="140" width="50" height="50" fill="#141b20" opacity="0.5"/>
+            <text x="50" y="195" fill="#5e6b76" font-family="Inter, sans-serif" font-size="9" letter-spacing="2">AV. J.B. JUSTO</text>
+          </svg>
+          <div class="map-pin">
+            <div class="map-pin-bubble">Estamos acá</div>
+            <div class="map-pin-dot"></div>
+          </div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Juan+B.+Justo+3745+Mar+del+Plata" target="_blank" rel="noopener">
+            Abrir en Maps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section-pad" style="background: var(--bg);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head-row">
+        <div>
+          <div class="section-eyebrow">Contacto</div>
+          <h2 class="section-title">Dejanos tu consulta y <em>te respondemos</em> hoy.</h2>
+        </div>
+        <p class="section-sub">Completá el formulario o escribinos por WhatsApp al 2235-525-054.</p>
+      </div>
+    </div>
+    <form class="contact-form visit-card" id="contact-form" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="cf-name">Nombre y apellido *</label>
+          <input id="cf-name" name="name" type="text" required placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label for="cf-phone">Teléfono *</label>
+          <input id="cf-phone" name="phone" type="tel" required placeholder="223 xxx-xxxx">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" placeholder="vos@ejemplo.com">
+        </div>
+        <div class="field">
+          <label for="cf-interest">Vehículo de interés</label>
+          <select id="cf-interest" name="interest">
+            <option>Sin preferencia</option>
+            <option>Citroën Berlingo 2012</option>
+            <option>Ford Ranger 2022</option>
+            <option>Ford Ranger 2017</option>
+            <option>Otro / búsqueda a pedido</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="cf-urgency">Urgencia</label>
+          <select id="cf-urgency" name="urgency">
+            <option value="baja">Sin apuro</option>
+            <option value="media">En el próximo mes</option>
+            <option value="alta">Esta semana</option>
+            <option value="inmediata">Hoy o mañana</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cf-permuta">¿Tenés auto para permutar?</label>
+          <select id="cf-permuta" name="permuta">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+            <option value="tal-vez">Tal vez</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-msg">Mensaje</label>
+        <textarea id="cf-msg" name="message" placeholder="Contanos qué estás buscando, si querés financiar, permutar, etc."></textarea>
+      </div>
+      <button type="submit" class="form-submit"><span>Enviar consulta</span></button>
+      <div class="form-success" id="form-success">
+        ¡Gracias! Recibimos tu mensaje. Te contactamos en breve al teléfono que dejaste.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-badge">
+            <span class="logo-badge-inner">
+              <svg class="logo-c" viewBox="0 0 32 32" fill="none">
+                <path d="M24 8.5C21.8 6.3 18.8 5 15.5 5 9.7 5 5 9.7 5 15.5S9.7 26 15.5 26c3.3 0 6.3-1.5 8.2-3.8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </span>
+          <span class="logo-wordmark">
+            <span class="logo-mark">Chronos</span>
+            <span class="logo-sub">Automotores</span>
+          </span>
+        </a>
+        <p>Agencia de autos usados certificados y 0KM en Mar del Plata. Financiación, permuta y stock renovado todo el año.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visitanos</h4>
+        <ul>
+          <li>Av. Juan B. Justo 3745</li>
+          <li>Mar del Plata, Buenos Aires</li>
+          <li>Lun a Vie · 09–19h</li>
+          <li>Sábados · 09–14h</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+542235525054">2235-525-054</a></li>
+          <li><a href="https://wa.me/5492235525054" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#contacto">Formulario de consulta</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chronos Automotores. Todos los derechos reservados.</span>
+      <span>Mar del Plata · Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5492235525054?text=Hola%2C%20vi%20su%20web%20y%20quería%20consultar" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.2-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+</a>
+
+<script>
+  // ---------- UTM capture ----------
+  const utms = (function () {
+    const p = new URLSearchParams(window.location.search);
+    const stored = JSON.parse(sessionStorage.getItem('chronos_utms') || '{}');
+    const result = {
+      utm_source:   p.get('utm_source')   || stored.utm_source   || 'directo',
+      utm_medium:   p.get('utm_medium')   || stored.utm_medium   || '',
+      utm_campaign: p.get('utm_campaign') || stored.utm_campaign || ''
+    };
+    sessionStorage.setItem('chronos_utms', JSON.stringify(result));
+    return result;
+  })();
+
+  // ---------- Cars ----------
+  const cars = [
+    { make: "Citroën",  model: "Berlingo",        year: 2012, tag: "Utilitario",          price: 9200,  img: "img/berlingo-2012.png", waText: "Hola, quería consultar por la Citroën Berlingo 2012" },
+    { make: "Ford",     model: "Ranger Limited 4×4", year: 2022, tag: "Pick-up · Destacada", price: 29500, img: "img/ranger-2022.png",    waText: "Hola, quería consultar por la Ford Ranger 2022" },
+    { make: "Ford",     model: "Ranger XLT",       year: 2017, tag: "Pick-up",             price: 23000, img: "img/ranger-2017.png",    waText: "Hola, quería consultar por la Ford Ranger 2017" }
+  ];
+  const fmt = new Intl.NumberFormat("es-AR");
+  document.getElementById("cars-grid").innerHTML = cars.map(c => `
+    <article class="car-card">
+      <div class="car-photo">
+        <span class="car-badge">${c.tag}</span>
+        <img src="${c.img}" alt="${c.make} ${c.model} ${c.year}" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="placeholder" data-label="Foto · ${c.make} ${c.year}" style="display:none;position:absolute;inset:0;"></div>
+      </div>
+      <div class="car-body">
+        <div class="car-info">
+          <div>
+            <p class="car-make">${c.make}</p>
+            <h3 class="car-model">${c.model}</h3>
+          </div>
+          <span class="car-year">${c.year}</span>
+        </div>
+        <div class="car-price-row">
+          <span class="car-price-currency">USD</span>
+          <span class="car-price">${fmt.format(c.price)}</span>
+        </div>
+        <a class="car-cta" href="https://wa.me/5492235525054?text=${encodeURIComponent(c.waText)}" target="_blank" rel="noopener">
+          Consultar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+  `).join("");
+
+  // ---------- Hours status ----------
+  (function () {
+    const now = new Date();
+    const day = now.getDay();
+    const h = now.getHours() + now.getMinutes() / 60;
+    const status = document.getElementById("hours-status");
+    const text = document.getElementById("hours-status-text");
+    const pulse = status.querySelector(".pulse");
+    let open = false, msg = "";
+    if (day >= 1 && day <= 5) {
+      open = h >= 9 && h < 19;
+      msg = open ? "Abierto ahora · cerramos a las 19:00" : (h < 9 ? "Cerrado · abrimos hoy a las 09:00" : "Cerrado · abrimos mañana a las 09:00");
+    } else if (day === 6) {
+      open = h >= 9 && h < 14;
+      msg = open ? "Abierto ahora · cerramos a las 14:00" : (h < 9 ? "Cerrado · abrimos hoy a las 09:00" : "Cerrado · abrimos el lunes a las 09:00");
+    } else {
+      msg = "Cerrado los domingos · abrimos el lunes a las 09:00";
+    }
+    text.textContent = msg;
+    if (!open) {
+      pulse.style.cssText = "background:#c54a3a;box-shadow:0 0 0 4px rgba(197,74,58,0.2);animation:none;";
+      status.style.cssText = "border-color:rgba(197,74,58,0.35);background:rgba(197,74,58,0.12);color:#e88476;";
+      status.style.display = "inline-flex";
+    }
+  })();
+
+  // ---------- Lead storage ----------
+  function saveLead(data) {
+    const leads = JSON.parse(localStorage.getItem('chronos_leads') || '[]');
+    leads.push(data);
+    localStorage.setItem('chronos_leads', JSON.stringify(leads));
+    console.log('Lead guardado. Para ver leads: JSON.parse(localStorage.getItem(\'chronos_leads\'))');
+  }
+
+  // ---------- Form ----------
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const f = e.target;
+    const name = f.name.value.trim();
+    const phone = f.phone.value.trim();
+    if (!name) { f.querySelector('#cf-name').focus(); return; }
+    if (!phone) { f.querySelector('#cf-phone').focus(); return; }
+
+    const lead = {
+      nombre:      name,
+      telefono:    phone,
+      email:       f.email.value.trim(),
+      autoInteres: f.interest.value,
+      urgencia:    f.urgency.value,
+      permuta:     f.permuta.value,
+      mensaje:     f.message.value.trim(),
+      fecha:       new Date().toISOString(),
+      pagina:      window.location.href,
+      referrer:    document.referrer || 'directo',
+      utm_source:  utms.utm_source,
+      utm_medium:  utms.utm_medium,
+      utm_campaign: utms.utm_campaign
+    };
+
+    saveLead(lead);
+
+    fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead)
+    }).catch(() => {});
+
+    document.getElementById("form-success").classList.add("show");
+    const btn = f.querySelector("button[type=submit]");
+    btn.querySelector("span").textContent = "Enviado ✓";
+    btn.disabled = true;
+  });
+</script>
+</body>
+</html>
