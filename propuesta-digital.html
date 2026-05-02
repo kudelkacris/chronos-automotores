@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta Digital — Chronos Automotores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --panel: #141414;
+    --panel-2: #1a1a1a;
+    --line: #222;
+    --red: #e63946;
+    --red-2: #ff4d5c;
+    --red-soft: rgba(230,57,70,0.10);
+    --red-line: rgba(230,57,70,0.30);
+    --green: #2ecc71;
+    --green-soft: rgba(46,204,113,0.10);
+    --green-line: rgba(46,204,113,0.28);
+    --ink: #f5f3ee;
+    --ink-2: #c8c4bb;
+    --ink-3: #888;
+    --brand-grad: linear-gradient(135deg, #c2185b 0%, #e63946 50%, #f4a261 100%);
+    --radius: 14px;
+  }
+
+  html { font-size: 15px; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── PAGE BREAKS ── */
+  .page { page-break-after: always; }
+  @media print {
+    .no-print { display: none !important; }
+    body { background: #0a0a0a !important; }
+  }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 40px; }
+
+  /* ─────────────────────────────────────────
+     COVER PAGE
+  ───────────────────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 64px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(230,57,70,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-logo {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .cover-logo-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .cover-logo-sub {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .cover-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--red-line);
+    border-radius: 999px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red-2);
+    width: fit-content; margin-bottom: 28px;
+  }
+  .cover-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--red-2);
+  }
+
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 6vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .cover-title em {
+    font-style: italic;
+    background: var(--brand-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    font-size: 17px; color: var(--ink-2);
+    max-width: 52ch; line-height: 1.65;
+  }
+
+  .cover-footer {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .cover-meta { font-size: 12px; color: var(--ink-3); line-height: 1.8; }
+  .cover-date {
+    font-size: 12px; color: var(--ink-3);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  /* ─────────────────────────────────────────
+     INNER PAGES
+  ───────────────────────────────────────── */
+  .section {
+    padding: 72px 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-eyebrow {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--red-2);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::after {
+    content: ""; flex: 1; height: 1px;
+    background: var(--red-line);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 36px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .section-lead {
+    font-size: 16px; color: var(--ink-2);
+    max-width: 62ch; line-height: 1.7;
+    margin-bottom: 44px;
+  }
+
+  /* ── DELIVERABLE CARDS ── */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .deliverable-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .deliverable-card.done {
+    border-color: var(--green-line);
+    background: linear-gradient(135deg, var(--panel) 70%, rgba(46,204,113,0.04));
+  }
+
+  .card-icon {
+    font-size: 22px; margin-bottom: 12px; display: block;
+  }
+  .card-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 3px 9px;
+    border-radius: 999px; margin-bottom: 10px;
+  }
+  .status-done {
+    background: var(--green-soft);
+    border: 1px solid var(--green-line);
+    color: var(--green);
+  }
+  .status-next {
+    background: var(--red-soft);
+    border: 1px solid var(--red-line);
+    color: var(--red-2);
+  }
+
+  .card-title {
+    font-weight: 600; font-size: 15px;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 13px; color: var(--ink-3);
+    line-height: 1.6;
+  }
+
+  /* ── METRICS ROW ── */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .metric {
+    background: var(--panel);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 38px;
+    background: var(--brand-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-label {
+    font-size: 11px; color: var(--ink-3);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .comparison {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: var(--panel-2);
+    padding: 12px 24px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-3);
+    border-bottom: 1px solid var(--line);
+  }
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    align-items: center;
+  }
+  .comparison-row:last-child { border-bottom: none; }
+  .comparison-row .item { color: var(--ink-2); }
+  .comp-no { color: #e05252; font-size: 16px; }
+  .comp-yes { color: var(--green); font-size: 16px; }
+
+  /* ── PLAN TABLE ── */
+  .plan-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+  .plan-table th {
+    text-align: left; padding: 10px 16px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-3);
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .plan-table td {
+    padding: 14px 16px;
+    font-size: 13.5px; color: var(--ink-2);
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .plan-table tr:last-child td { border-bottom: none; }
+  .plan-table tr:nth-child(odd) td { background: var(--panel); }
+  .plan-table tr:nth-child(even) td { background: var(--panel-2); }
+  .badge-prio {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 999px; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .prio-crit { background: rgba(230,57,70,0.15); color: #ff6b6b; border: 1px solid rgba(230,57,70,0.3); }
+  .prio-high { background: rgba(244,162,97,0.15); color: #f4a261; border: 1px solid rgba(244,162,97,0.3); }
+  .prio-med  { background: rgba(100,100,200,0.12); color: #8888dd; border: 1px solid rgba(100,100,200,0.25); }
+
+  /* ── PROJECTION ── */
+  .projection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .proj-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .proj-card.highlight {
+    border-color: var(--red-line);
+    background: linear-gradient(135deg, var(--panel) 60%, rgba(230,57,70,0.05));
+  }
+  .proj-scenario {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 12px;
+  }
+  .proj-num {
+    font-family: 'Fraunces', serif;
+    font-size: 30px; font-weight: 500;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .proj-period { font-size: 11px; color: var(--ink-3); }
+
+  /* ── SERVICES ── */
+  .services-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+  .service-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 20px 24px;
+    gap: 24px;
+  }
+  .service-info { flex: 1; }
+  .service-name { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+  .service-desc { font-size: 13px; color: var(--ink-3); }
+  .service-price {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; color: var(--ink);
+    white-space: nowrap; text-align: right;
+  }
+  .service-freq { font-size: 11px; color: var(--ink-3); }
+
+  /* ── TESTIMONIAL STYLE QUOTE ── */
+  .quote-box {
+    background: var(--red-soft);
+    border: 1px solid var(--red-line);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .quote-text {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .quote-attr { font-size: 12px; color: var(--ink-3); letter-spacing: 0.1em; }
+
+  /* ── CTA FINAL ── */
+  .cta-section {
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    padding: 64px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300; font-size: 38px;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .cta-sub { font-size: 16px; color: var(--ink-2); margin-bottom: 36px; }
+  .cta-contacts { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .cta-contact { text-align: center; }
+  .cta-contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .cta-contact-val { font-size: 16px; font-weight: 600; color: var(--ink); }
+  .cta-divider { width: 48px; height: 2px; background: var(--brand-grad); margin: 24px auto; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PORTADA
+══════════════════════════════════════════ -->
+<div class="cover page">
+  <div class="cover-logo">
+    <span class="cover-logo-name">Chronos Automotores</span>
+    <span class="cover-logo-sub">Mar del Plata · Buenos Aires</span>
+  </div>
+
+  <div>
+    <div class="cover-badge">
+      <span class="cover-badge-dot"></span>
+      Propuesta de Transformación Digital
+    </div>
+    <h1 class="cover-title">
+      Tu negocio,<br>
+      <em>visible donde<br>tus clientes buscan.</em>
+    </h1>
+    <p class="cover-sub">
+      Lo que construimos, lo que viene, y por qué cada peso invertido en presencia digital te devuelve más clientes.
+    </p>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-meta">
+      Preparado para Chronos Automotores<br>
+      Av. Juan B. Justo 3745 · Mar del Plata
+    </div>
+    <div class="cover-date">Mayo 2026</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SITUACIÓN ACTUAL
+══════════════════════════════════════════ -->
+<div class="section page">
+  <div class="section-eyebrow">01 — Diagnóstico</div>
+  <h2 class="section-title">Dónde estaban antes</h2>
+  <p class="section-lead">
+    Chronos Automotores llevaba años operando con excelente reputación local. Pero los compradores de autos hoy buscan en Google antes de pisar una concesionaria. Sin presencia digital, los leads se perdían antes de llegar.
+  </p>
+
+  <div class="comparison">
+    <div class="comparison-header">
+      <span>Canal / Funcionalidad</span>
+      <span style="text-align:center">Antes</span>
+      <span style="text-align:center">Hoy</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Sitio web propio</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Formulario de contacto que llega al mail</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Fotos del stock con detalle y precio</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">WhatsApp directo por cada auto</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Posicionamiento en Google (SEO local)</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Instagram con link funcional</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Estrategia de contenido Instagram</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+    <div class="comparison-row">
+      <span class="item">Scripts de ventas para WhatsApp / grupos</span>
+      <span class="comp-no" style="text-align:center">✗</span>
+      <span class="comp-yes" style="text-align:center">✓</span>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <p class="quote-text">"El 87% de los compradores de autos usados investigan online antes de contactar a un vendedor. Si no aparecés en esa investigación, no existís."</p>
+    <p class="quote-attr">— Estudio de comportamiento del comprador automotriz, Argentina 2024</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LO QUE HICIMOS
+══════════════════════════════════════════ -->
+<div class="section page">
+  <div class="section-eyebrow">02 — Entregables</div>
+  <h2 class="section-title">Lo que construimos</h2>
+  <p class="section-lead">
+    En una única sesión de trabajo construimos e implementamos un ecosistema digital completo, operativo y en producción desde el día uno.
+  </p>
+
+  <div class="deliverables-grid">
+    <div class="deliverable-card done">
+      <span class="card-icon">🌐</span>
+      <span class="card-status status-done">✓ En vivo</span>
+      <div class="card-title">Landing Page Profesional</div>
+      <p class="card-desc">Página con diseño premium, stock de vehículos con fotos, precios, modal de detalle y CTA a WhatsApp. Optimizada para mobile.</p>
+    </div>
+
+    <div class="deliverable-card done">
+      <span class="card-icon">📩</span>
+      <span class="card-status status-done">✓ Funcionando</span>
+      <div class="card-title">Formulario de Leads al Mail</div>
+      <p class="card-desc">Formulario conectado a Formspree. Cada consulta llega directo al mail con nombre, teléfono, auto de interés, urgencia y si tiene permuta.</p>
+    </div>
+
+    <div class="deliverable-card done">
+      <span class="card-icon">🔍</span>
+      <span class="card-status status-done">✓ Implementado</span>
+      <div class="card-title">SEO Local Completo</div>
+      <p class="card-desc">Schema.org AutoDealer, geo tags para Mar del Plata, Open Graph, canonical y robots.txt. Base para aparecer en búsquedas locales.</p>
+    </div>
+
+    <div class="deliverable-card done">
+      <span class="card-icon">📱</span>
+      <span class="card-status status-done">✓ Listo para usar</span>
+      <div class="card-title">Estrategia Instagram</div>
+      <p class="card-desc">Calendario de contenido 8 semanas, hashtags locales optimizados, bio copy y guía de stories. Cada post termina en WhatsApp.</p>
+    </div>
+
+    <div class="deliverable-card done">
+      <span class="card-icon">💬</span>
+      <span class="card-status status-done">✓ Scripts listos</span>
+      <div class="card-title">Outbound: Scripts de Ventas</div>
+      <p class="card-desc">Templates para responder leads de WhatsApp, publicaciones en grupos de Facebook "busco auto MDP" y seguimiento a los 2 días.</p>
+    </div>
+
+    <div class="deliverable-card done">
+      <span class="card-icon">🚀</span>
+      <span class="card-status status-done">✓ Publicado</span>
+      <div class="card-title">Deploy en GitHub Pages</div>
+      <p class="card-desc">Sitio publicado en internet, accesible desde cualquier dispositivo, sin costo de hosting. URL propia disponible cuando quieran.</p>
+    </div>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric">
+      <div class="metric-num">1 día</div>
+      <div class="metric-label">Tiempo de<br>implementación</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">$0</div>
+      <div class="metric-label">Costo mensual<br>de hosting</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">9</div>
+      <div class="metric-label">Campos de calificación<br>en cada lead</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LO QUE VIENE
+══════════════════════════════════════════ -->
+<div class="section page">
+  <div class="section-eyebrow">03 — Próximos pasos</div>
+  <h2 class="section-title">Lo que viene</h2>
+  <p class="section-lead">
+    La base está construida. Ahora se trata de activar los canales que generan tráfico real y optimizar la conversión mes a mes.
+  </p>
+
+  <table class="plan-table">
+    <thead>
+      <tr>
+        <th>Acción</th>
+        <th>Prioridad</th>
+        <th>Impacto esperado</th>
+        <th>Plazo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Google My Business</strong><br><span style="color:var(--ink-3);font-size:12px">Perfil verificado con fotos, horario y reseñas</span></td>
+        <td><span class="badge-prio prio-crit">Crítica</span></td>
+        <td>Aparecer en Google Maps cuando buscan "autos usados Mar del Plata"</td>
+        <td>Esta semana</td>
+      </tr>
+      <tr>
+        <td><strong>Dominio propio</strong><br><span style="color:var(--ink-3);font-size:12px">chronosautomotores.com.ar</span></td>
+        <td><span class="badge-prio prio-high">Alta</span></td>
+        <td>Mayor credibilidad, mejor posicionamiento en Google</td>
+        <td>Semana 1–2</td>
+      </tr>
+      <tr>
+        <td><strong>Instagram: 2 posts/semana</strong><br><span style="color:var(--ink-3);font-size:12px">Reels del stock, carouseles de tips, stories diarias</span></td>
+        <td><span class="badge-prio prio-high">Alta</span></td>
+        <td>50–200 seguidores nuevos/mes, leads directos por DM</td>
+        <td>Continuo</td>
+      </tr>
+      <tr>
+        <td><strong>Outbound grupos Facebook</strong><br><span style="color:var(--ink-3);font-size:12px">Publicar en "Busco auto Mar del Plata" con script</span></td>
+        <td><span class="badge-prio prio-high">Alta</span></td>
+        <td>3–8 consultas adicionales por publicación</td>
+        <td>Esta semana</td>
+      </tr>
+      <tr>
+        <td><strong>Google Analytics</strong><br><span style="color:var(--ink-3);font-size:12px">Saber de dónde vienen los visitantes</span></td>
+        <td><span class="badge-prio prio-med">Media</span></td>
+        <td>Optimizar inversión según canales que convierten</td>
+        <td>Semana 2–3</td>
+      </tr>
+      <tr>
+        <td><strong>Sistema de reseñas</strong><br><span style="color:var(--ink-3);font-size:12px">Pedir Google Review a cada cliente satisfecho</span></td>
+        <td><span class="badge-prio prio-med">Media</span></td>
+        <td>Social proof que cierra más ventas</td>
+        <td>Mes 1–2</td>
+      </tr>
+      <tr>
+        <td><strong>WhatsApp Business API</strong><br><span style="color:var(--ink-3);font-size:12px">Respuestas automáticas fuera de horario</span></td>
+        <td><span class="badge-prio prio-med">Media</span></td>
+        <td>No perder leads que llegan de noche o el fin de semana</td>
+        <td>Mes 2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PROYECCIÓN FINANCIERA
+══════════════════════════════════════════ -->
+<div class="section page">
+  <div class="section-eyebrow">04 — Proyección</div>
+  <h2 class="section-title">El impacto en números</h2>
+  <p class="section-lead">
+    Con un margen promedio de 13% por unidad y precio promedio de USD 15.000, esto es lo que significa activar los canales digitales durante los próximos 3 meses.
+  </p>
+
+  <div class="projection-grid">
+    <div class="proj-card">
+      <div class="proj-scenario">Sin activar canales</div>
+      <div class="proj-num">USD 5.850</div>
+      <div class="proj-period">Margen estimado · Q2 2026</div>
+    </div>
+    <div class="proj-card highlight">
+      <div class="proj-scenario" style="color:var(--red-2)">Con presencia digital activa</div>
+      <div class="proj-num" style="background:var(--brand-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">USD 17.550</div>
+      <div class="proj-period">Margen estimado · Q2 2026</div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-scenario">Diferencia</div>
+      <div class="proj-num" style="color:var(--green)">+USD 11.700</div>
+      <div class="proj-period">Margen adicional en 90 días</div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <p class="quote-text">"El break-even del negocio se alcanza vendiendo menos de 1 auto por mes. Cada auto adicional que entra por canal digital es ganancia pura sobre costos fijos ya cubiertos."</p>
+    <p class="quote-attr">— Análisis FP&A basado en estructura de costos estimada para concesionaria PyME, Mar del Plata 2026</p>
+  </div>
+
+  <div class="deliverables-grid" style="margin-bottom:0">
+    <div class="deliverable-card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">Break-even mensual</div>
+      <p class="card-desc">Con costos fijos de ~USD 2.350/mes, el negocio cubre gastos vendiendo menos de 1 auto. El digital opera sobre ese piso.</p>
+    </div>
+    <div class="deliverable-card">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">ROI del canal digital</div>
+      <p class="card-desc">Cada lead calificado que llega por formulario tarda menos de 24h en ser contactado. La velocidad de respuesta duplica la tasa de cierre.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICIOS CONTINUOS
+══════════════════════════════════════════ -->
+<div class="section page">
+  <div class="section-eyebrow">05 — Propuesta comercial</div>
+  <h2 class="section-title">Cómo seguimos trabajando juntos</h2>
+  <p class="section-lead">
+    La página es el piso, no el techo. Una presencia digital que genera ventas requiere mantenimiento, contenido fresco y optimización continua.
+  </p>
+
+  <div class="services-list">
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-name">Setup inicial completo</div>
+        <div class="service-desc">Landing page, formulario, SEO, Instagram setup, scripts de ventas. Todo lo que ya construimos.</div>
+      </div>
+      <div>
+        <div class="service-price">USD 450</div>
+        <div class="service-freq">pago único</div>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-name">Mantenimiento mensual</div>
+        <div class="service-desc">Actualización de stock, 4 posts Instagram con diseño incluido, reporte mensual de leads y métricas.</div>
+      </div>
+      <div>
+        <div class="service-price">USD 120</div>
+        <div class="service-freq">por mes</div>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-name">Pack crecimiento</div>
+        <div class="service-desc">Google My Business + dominio propio + Google Analytics + WhatsApp Business configurado.</div>
+      </div>
+      <div>
+        <div class="service-price">USD 180</div>
+        <div class="service-freq">pago único</div>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-name">Pack publicidad paga</div>
+        <div class="service-desc">Gestión de campañas Meta Ads (Facebook + Instagram) segmentadas en Mar del Plata para "intención de compra auto".</div>
+      </div>
+      <div>
+        <div class="service-price">USD 150</div>
+        <div class="service-freq">por mes + presupuesto</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric">
+      <div class="metric-num">3–5</div>
+      <div class="metric-label">Leads calificados<br>esperados por semana</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">&lt; 2h</div>
+      <div class="metric-label">Tiempo de respuesta<br>recomendado</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">40%</div>
+      <div class="metric-label">Tasa de cierre con<br>respuesta rápida</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════ -->
+<div class="cta-section">
+  <h2 class="cta-title">¿Arrancamos?</h2>
+  <p class="cta-sub">Cada semana sin presencia digital es una semana donde tus clientes<br>están eligiendo al que sí aparece en Google.</p>
+  <div class="cta-divider"></div>
+  <div class="cta-contacts">
+    <div class="cta-contact">
+      <div class="cta-contact-label">WhatsApp</div>
+      <div class="cta-contact-val">223 552-5054</div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Instagram</div>
+      <div class="cta-contact-val">@chronosautomotores_</div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Web</div>
+      <div class="cta-contact-val">kudelkacris.github.io/chronos-automotores</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
