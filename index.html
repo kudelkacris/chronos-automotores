@@ -897,16 +897,10 @@
     }
   })();
 
-  // ---------- Lead storage ----------
-  function saveLead(data) {
-    const leads = JSON.parse(localStorage.getItem('chronos_leads') || '[]');
-    leads.push(data);
-    localStorage.setItem('chronos_leads', JSON.stringify(leads));
-    console.log('Lead guardado. Para ver leads: JSON.parse(localStorage.getItem(\'chronos_leads\'))');
-  }
+  // ---------- Form → Formspree ----------
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgodvrye";
 
-  // ---------- Form ----------
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
+  document.getElementById("contact-form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const f = e.target;
     const name = f.name.value.trim();
@@ -914,34 +908,41 @@
     if (!name) { f.querySelector('#cf-name').focus(); return; }
     if (!phone) { f.querySelector('#cf-phone').focus(); return; }
 
-    const lead = {
-      nombre:      name,
-      telefono:    phone,
-      email:       f.email.value.trim(),
-      autoInteres: f.interest.value,
-      urgencia:    f.urgency.value,
-      permuta:     f.permuta.value,
-      mensaje:     f.message.value.trim(),
-      fecha:       new Date().toISOString(),
-      pagina:      window.location.href,
-      referrer:    document.referrer || 'directo',
-      utm_source:  utms.utm_source,
-      utm_medium:  utms.utm_medium,
+    const btn = f.querySelector("button[type=submit]");
+    btn.querySelector("span").textContent = "Enviando…";
+    btn.disabled = true;
+
+    const payload = {
+      nombre:       name,
+      telefono:     phone,
+      email:        f.email.value.trim(),
+      autoInteres:  f.interest.value,
+      urgencia:     f.urgency.value,
+      permuta:      f.permuta.value,
+      mensaje:      f.message.value.trim(),
+      _subject:     "Nuevo lead Chronos Automotores — " + name,
+      utm_source:   utms.utm_source,
+      utm_medium:   utms.utm_medium,
       utm_campaign: utms.utm_campaign
     };
 
-    saveLead(lead);
-
-    fetch('/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lead)
-    }).catch(() => {});
-
-    document.getElementById("form-success").classList.add("show");
-    const btn = f.querySelector("button[type=submit]");
-    btn.querySelector("span").textContent = "Enviado ✓";
-    btn.disabled = true;
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        document.getElementById("form-success").classList.add("show");
+        btn.querySelector("span").textContent = "Enviado ✓";
+      } else {
+        btn.querySelector("span").textContent = "Error — intentá de nuevo";
+        btn.disabled = false;
+      }
+    } catch {
+      btn.querySelector("span").textContent = "Error — intentá de nuevo";
+      btn.disabled = false;
+    }
   });
 
   // ---------- Car photo modal ----------
